@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      const numbers = [3, 5, 1, 8, 2, 10];
+      function findMinMaxNumbers(arr) {
+        if (arr.length === 0) {
+          return "Listede Eleman Bulunmamaktadır!!!";
+        }
+        let min = arr[0];
+        let max = arr[0];
+        for (let i = 1; i < arr.length; i++) {
+          if (arr[i] < min) {
+            min = arr[i];
+          }
+          if (arr[i] > max) {
+            max = arr[i];
+          }
+        }
+        return {
+          min: min,
+          max: max,
+        };
+      }
+
+      const result = findMinMaxNumbers(numbers);
+      console.log("En küçük sayı:", result.min);
+      console.log("En büyük sayı:", result.max);
+    </script>
+  </body>
+</html>
