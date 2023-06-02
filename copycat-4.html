@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      // function findLongestSubstring(str) {
+      //   let longestSubstring = "";
+      //   let currentSubstring = "";
+      //   let visitedCharacters = {};
+
+      //   for (let i = 0; i < str.length; i++) {
+      //     const char = str[i];
+
+      //     if (!visitedCharacters[char]) {
+      //       visitedCharacters[char] = true;
+      //       currentSubstring += char;
+      //     } else {
+      //       if (currentSubstring.length > longestSubstring.length) {
+      //         longestSubstring = currentSubstring;
+      //       }
+
+      //       const previousIndex = str.indexOf(
+      //         char,
+      //         i - currentSubstring.length
+      //       );
+      //       console.log(previousIndex);
+      //       currentSubstring = str.slice(previousIndex + 1, i + 1);
+      //       visitedCharacters = {};
+
+      //       for (let j = previousIndex + 1; j <= i; j++) {
+      //         visitedCharacters[str[j]] = true;
+      //       }
+      //     }
+      //   }
+      //   console.log(currentSubstring.length);
+      //   return currentSubstring.length > longestSubstring.length
+      //     ? currentSubstring
+      //     : longestSubstring;
+      // }
+
+      // const input = "pwwkew";
+      // console.log(input.length);
+      // const longestSubstring = findLongestSubstring(input);
+      // console.log("En uzun tekrarsız alt dizi:", longestSubstring); // Örnek çıktı: "wke"
+
+      function findLongestSubstring(str) {
+        let currentSubstring = "";
+        let longestSubstring = "";
+        let visitedCharacters = {};
+        for (let i = 0; i < str.length; i++) {
+          const char = str[i];
+
+          if (!visitedCharacters[str[i]]) {
+            visitedCharacters[str[i]] = true;
+
+            currentSubstring += char;
+          } else {
+            if (currentSubstring > longestSubstring) {
+              longestSubstring = currentSubstring;
+            }
+
+            let previousIndex = str.indexOf(char, i - currentSubstring.length);
+
+            currentSubstring = str.slice(previousIndex + 1, i + 1);
+
+            visitedCharacters = {};
+
+            for (let x = previousIndex + 1; x <= i; x++) {
+              visitedCharacters[str[x]] = true;
+            }
+          }
+        }
+        return currentSubstring > longestSubstring
+          ? currentSubstring
+          : longestSubstring;
+      }
+      const input = "pwwkew";
+      const longestSubstring = findLongestSubstring(input);
+      console.log("En uzun tekrarsız alt dizi:", longestSubstring);
+    </script>
+  </body>
+</html>
