@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      function findMostFrequentNumber(arr) {
+        let countMap = new Map();
+        let mostFrequentNum = null;
+        let maxCount = 0;
+        for (let i = 0; i < arr.length; i++) {
+          const num = arr[i];
+
+          if (countMap.has(num)) {
+            countMap.set(num, countMap.get(num) + 1);
+          } else {
+            countMap.set(num, 1);
+          }
+
+          if (countMap.get(num) > maxCount) {
+            maxCount = countMap.get(num);
+            mostFrequentNum = num;
+          }
+        }
+
+        return [mostFrequentNum, maxCount];
+      }
+
+      const number = [1, 2, 3, 2, 3, 4, 5, 3, 6, 3];
+      const mostFrequentNumber = findMostFrequentNumber(number);
+      console.log(mostFrequentNumber);
+    </script>
+  </body>
+</html>
