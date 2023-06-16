@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      function findMostFrequentWord(text) {
+        const words = text.split(" ");
+
+        const frequency = {};
+        let maxFrequency = 0;
+        let mostFrequentWord = "";
+
+        for (let i = 0; i < words.length; i++) {
+          const word = words[i].toLowerCase();
+          if (!frequency[word]) {
+            frequency[word] = 1;
+          } else {
+            frequency[word]++;
+          }
+
+          if (frequency[word] > maxFrequency) {
+            maxFrequency = frequency[word];
+            mostFrequentWord = word;
+          }
+        }
+        const result = {
+          word: mostFrequentWord,
+          frequency: maxFrequency,
+        };
+        return result;
+      }
+
+      const text =
+        "Bu bir örnek metindir. Örnek metin içerisinde en sık tekrar eden kelimeyi bulma algoritmasını test ediyoruz. Örnek";
+      const mostFrequent = findMostFrequentWord(text);
+      console.log("En sık tekrar eden kelime:", mostFrequent.word);
+      console.log("Frekansı:", mostFrequent.frequency);
+    </script>
+  </body>
+</html>
