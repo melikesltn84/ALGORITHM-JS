@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      function sumOfTwoNumbers(arr, target) {
+        const map = {};
+        for (let i = 0; i < arr.length; i++) {
+          const complement = target - arr[i];
+          if (map[complement] !== undefined) {
+            return [map[complement], i];
+          }
+          map[arr[i]] = i;
+        }
+        return null;
+      }
+      const array = [3, 7, 11, 15];
+      const targetSum = 9;
+      console.log("İki sayının toplamı:", sumOfTwoNumbers(array, targetSum));
+    </script>
+  </body>
+</html>
